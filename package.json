@@ -11,7 +11,6 @@
     "start": "node src/server.js",
     "predeploy": "npm audit && npm run migrate-production",
     "deploy": "git push heroku master"
-
   },
   "keywords": [],
   "author": "",
@@ -20,14 +19,20 @@
     "cors": "^2.8.5",
     "dotenv": "^7.0.0",
     "express": "^4.16.4",
+    "express-router": "0.0.1",
     "helmet": "^3.16.0",
+    "knex": "^0.19.1",
     "morgan": "^1.9.1",
-    "winston": "^3.2.1"
+    "winston": "^3.2.1",
+    "xss": "^1.0.6"
   },
   "devDependencies": {
     "chai": "^4.2.0",
     "mocha": "^6.1.4",
     "nodemon": "^1.19.0",
-    "supertest": "^4.0.2"
+    "supertest": "^4.0.2",
+    "pg": "^7.11.0",
+    "postgrator": "^3.10.1",
+    "postgrator-cli": "^3.1.0"
   }
 }
