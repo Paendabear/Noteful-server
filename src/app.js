@@ -10,13 +10,16 @@ const { NODE_ENV } = require('./config');
 const errorHandler = require('./error-handler'); 
 const validateBearerToken = require('./validate-bearer-token');
 
+const foldersRouter = require('./folders/folders-router');
+const notesRouter = require('./notes/notes-router');
+
 const app = express();
 
 const morganOption = (NODE_ENV === 'production')
   ? 'tiny'
   : 'common';
 
-const whitelist = ['http://localhost:3000', 'http://my-project.com'];
+const whitelist = ['http://localhost:3000', 'https://noteful-ppae.now.sh/'];
 const options = {
   origin: function (origin, callback) {
     if (whitelist.indexOf(origin) !== -1 || !origin) {
@@ -33,6 +36,9 @@ app.use(cors(options));
 
 app.use(helmet());
 app.use(validateBearerToken);
+
+app.use('/api/folders', foldersRouter);
+app.use('/api/notes', notesRouter);
 
 app.get('/', (req, res) => {
   res.send('Hello, world!');
